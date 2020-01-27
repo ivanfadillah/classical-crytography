@@ -123,6 +123,22 @@ def print_rand_rable(table):
 				print('|' + number_to_alpha(table[row][column]) + '|', end = '')
 		print('')
 
+def rand_table_to_str(table):
+	txt = '  '
+	for char in alphabet:
+		txt = txt + (char).upper() + '  '
+	txt = txt + "\n"
+		
+	for row in range(len(table)) :
+		txt = txt + alphabet[row].upper() + ' '
+		for column in range(len(table[row])) :
+			if column == 0 :
+				txt = txt + number_to_alpha(table[row][column]) + '|'
+			else :
+				txt = txt + '|' + number_to_alpha(table[row][column]) + '|'
+		txt = txt + "\n"
+	return txt
+
 def full_vigenere_encrypt(plain_text,key,table):
 	#Asumption : plain text in lowercase
     
@@ -253,10 +269,18 @@ def random_playfair_table() :
 	return playfair_table
 	
 def print_playfair_table(random_playfair_table) :
-	for row in range(5):
-		for column in range(5):
+	for row in range(len(random_playfair_table)):
+		for column in range(len(random_playfair_table[0])):
 			print(number_to_alpha(random_playfair_table[row][column]) + "|",end="")
 		print("")
+
+def playfair_table_to_str(random_playfair_table) :
+	txt = ''
+	for row in range(len(random_playfair_table)):
+		for column in range(len(random_playfair_table[0])):
+			txt = txt + number_to_alpha(random_playfair_table[row][column]) + "|"
+		txt = txt + "\n"
+	return txt
 		
 def create_bigram(list_of_char) :
 	change = True
@@ -419,43 +443,43 @@ def super_decrypt(cipher_text,key_vigenere,key_transposition):
 	return (vigenere_decrypt(transposition_decrypt(cipher_text,key_transposition),key_vigenere))
 
 #Main
-def main() :
-	print(alpha_to_number('a'))
-	print(number_to_alpha(9))
+# def main() :
+# 	print(alpha_to_number('a'))
+# 	print(number_to_alpha(9))
     
-	coba_split = list('coba')
-	print("".join(coba_split))
+# 	coba_split = list('coba')
+# 	print("".join(coba_split))
 
-	print(vigenere_encrypt("this plain text","sony"))
-	print(vigenere_decrypt(vigenere_encrypt("this plain text","sony"),"sony"))
+# 	print(vigenere_encrypt("this plain text","sony"))
+# 	print(vigenere_decrypt(vigenere_encrypt("this plain text","sony"),"sony"))
 
-	print(number_to_alpha((alpha_to_number('l')-alpha_to_number('s')) % 26))
+# 	print(number_to_alpha((alpha_to_number('l')-alpha_to_number('s')) % 26))
 
-	test_table = random_table()
-	print_rand_rable(test_table)
-	print('')
-	print(full_vigenere_encrypt("this plain text","sony",test_table))
-	print(full_vigenere_decrypt(full_vigenere_encrypt("this plain text","sony",test_table),"sony",test_table))
+# 	test_table = random_table()
+# 	print_rand_rable(test_table)
+# 	print('')
+# 	print(full_vigenere_encrypt("this plain text","sony",test_table))
+# 	print(full_vigenere_decrypt(full_vigenere_encrypt("this plain text","sony",test_table),"sony",test_table))
 	
-	print(original_separation(auto_key_vigenere_decrypt(original_separation(auto_key_vigenere_encrypt("negara penghasil minyak","indo"),"negara penghasil minyak"),"indo"),"negara penghasil minyak"))
+# 	print(original_separation(auto_key_vigenere_decrypt(original_separation(auto_key_vigenere_encrypt("negara penghasil minyak","indo"),"negara penghasil minyak"),"indo"),"negara penghasil minyak"))
 	
-	print(running_key_vigenere_decrypt(running_key_vigenere_encrypt("indo","negara penghasil minyak"),"negara penghasil minyak"))
+# 	print(running_key_vigenere_decrypt(running_key_vigenere_encrypt("indo","negara penghasil minyak"),"negara penghasil minyak"))
 	
-	print(extended_vigenere_encrypt("Apakah anda sudah makan wil?","William"))
-	print(extended_vigenere_decrypt("Í×ÊÉ¸×ÐÍÔâ»ÊÔÖÂØ¸×ãÒÍ¬","William"))
+# 	print(extended_vigenere_encrypt("Apakah anda sudah makan wil?","William"))
+# 	print(extended_vigenere_decrypt("Í×ÊÉ¸×ÐÍÔâ»ÊÔÖÂØ¸×ãÒÍ¬","William"))
 	
-	test2_table = random_playfair_table()
-	print_playfair_table(test2_table)
-	#print(index_element_not_in_list("temui ibu nanti malam",alphabet))
-	#print(playfair_encrypt("temui ibu nanti malam",test2_table))
-	#print(original_separation("abcdefghijkl","ai bv asd"))
-	print(original_separation(playfair_encrypt("temui ibu nanti malam?",test2_table),"temui ibu nanti malam?"))
-	print(original_separation(playfair_decrypt(original_separation(playfair_encrypt("temui ibu nanti malam",test2_table),"temui ibu nanti malam"),test2_table),"temui ibu nanti malam"))
+# 	test2_table = random_playfair_table()
+# 	print_playfair_table(test2_table)
+# 	#print(index_element_not_in_list("temui ibu nanti malam",alphabet))
+# 	#print(playfair_encrypt("temui ibu nanti malam",test2_table))
+# 	#print(original_separation("abcdefghijkl","ai bv asd"))
+# 	print(original_separation(playfair_encrypt("temui ibu nanti malam?",test2_table),"temui ibu nanti malam?"))
+# 	print(original_separation(playfair_decrypt(original_separation(playfair_encrypt("temui ibu nanti malam",test2_table),"temui ibu nanti malam"),test2_table),"temui ibu nanti malam"))
 	
-	print(separate_by_5("a"))
+# 	print(separate_by_5("a"))
 	
-	print(transposition_encrypt("departemen informatika",6))
-	print(transposition_decrypt(transposition_encrypt("departemen informatika",3),3))
+# 	print(transposition_encrypt("departemen informatika",6))
+# 	print(transposition_decrypt(transposition_encrypt("departemen informatika",3),3))
 	
-	print(super_decrypt(super_encrypt("lelaki tangguh","william",5),"william",5))
-main()
+# 	print(super_decrypt(super_encrypt("lelaki tangguh","william",5),"william",5))
+# main()
