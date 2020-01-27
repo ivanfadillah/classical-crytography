@@ -1,6 +1,6 @@
 # Classical Crytography
 
-![Screenshoot Application](https://github.com/ivanfadillah/classical-crytography/sc.png
+![Screenshoot Application](https://github.com/ivanfadillah/classical-crytography/sc.png)
 
 # Core functionalities
 
