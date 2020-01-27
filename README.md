@@ -1,5 +1,7 @@
 # Classical Crytography
 
+![Screenshoot Application](https://github.com/ivanfadillah/classical-crytography/sc.png
+
 # Core functionalities
 
 ### 1. Able to encrypt and decrypt a text from file or keyboard using 
